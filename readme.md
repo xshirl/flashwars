@@ -1,0 +1,2 @@
+# Flashwars - MongoDB + Dev Hackathon
+
