@@ -1,38 +1,87 @@
-.App {
-  text-align: center;
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: "Helvetica Neue";
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 10%;
+}
+
+.menu {
+  list-style: none;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: #eee;
+}
+
+nav h1 {
+  color: #eee;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.item {
+  display: inline-block;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(./img/flashwar.jpg) no-repeat center center;
+  background-size: cover;
+  min-height: 98vh;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  position: relative;
+}
+
+.header-text {
+  position: absolute;
+  top: 50%;
   color: white;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
 }
 
-.App-link {
-  color: #61dafb;
+.header-text h3 {
+  font-family: "Georgia";
+  font-size: 40px;
+  letter-spacing: 1.5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header-text h4 {
+  font-size: 25px;
+}
+
+.shop-cta {
+  margin-top: 20px;
+  padding: 15px 30px 15px 30px;
+  background-color: transparent;
+  font-family: "Arial";
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  outline: none;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.shop-cta:hover {
+  background-color: white;
+  color: black !important;
+  outline: none;
+  border: none;
 }

@@ -19,7 +19,7 @@ router.get("/categories/:id", (req, res) =>
 ) // gets public decks by category
 router.get("/categories/:id/:deckId", (req, res) => controller.getDeck(req, res))
 //decks --private
-router.get("/decks/", (req, res) => controller.getDecks(req, res)) //returns array of all decks
+router.get("/profile/:id/decks/", (req, res) => controller.getDecks(req, res)) //returns array of all decks
 router.post("/decks", (req, res) => controller.createDeck(req, res)) //create new deck
 router.get("/decks/:deckId", (req, res) => controller.getDeck(req, res)) //get user's deck's flaschards
 router.delete("/decks/:id", (req, res) => controller.deleteDeck(req, res))

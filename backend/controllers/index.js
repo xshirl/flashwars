@@ -116,10 +116,10 @@ const getDecks = async (req, res) => {
       return res.status(200).json(decks)
     }
     const legit = await userOfRequest(req)
-
+    const { id } = req.params
     if (legit) {
       const decks = await Deck.find({
-        creator: legit.id,
+        creator: id,
       })
       return res.status(200).json(decks)
     }
@@ -216,7 +216,7 @@ const editFlashcard = async (req, res) => {
     const legit = await userOfRequest(req)
 
     if (legit) {
-      const flashcard = await Flashcard.findById(req.params.id) //flashcardid in route
+      const flashcard = await Flashcard.findById(req.params.cardId) //flashcardid in route
 
       if (legit.id !== flashcard.creator.toString()) {
         return res.status(401).send("Not Authorized")
@@ -371,7 +371,7 @@ const userProfile = async (req, res) => {
       const user = await User.findById(legit.id).populate("decks")
       const profile = {
         id: user._id,
-        username: user.name,
+        username: user.username,
         name: user.name,
         points: user.points,
         rank: user.rank,

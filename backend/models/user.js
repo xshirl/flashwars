@@ -21,6 +21,7 @@ const User = new Schema(
     points: {
       type: Number,
       default: 0,
+      ref: "points",
     },
     rank: {
       type: Number,
