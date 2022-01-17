@@ -7,8 +7,12 @@ import Profile from "./components/Profile"
 import CategoryList from "./components/CategoryList"
 import DeckList from "./components/DeckList"
 import Leaderboard from "./components/Leaderboard"
+import AddFlashcard from "./components/AddFlashcard"
+import FlashcardList from "./components/FlashcardList"
+import Flashcard from "./components/Flashcard"
+import Card from "./components/Card"
 import "./App.css"
-
+import "bootstrap/dist/css/bootstrap.min.css"
 function App() {
   return (
     <Router>
@@ -25,6 +29,26 @@ function App() {
             component={DeckList}
           />
           <Route exact path="/leaderboard" component={Leaderboard} />
+          {/* <Route exact path="/decks/:id" component={AddFlashcard} /> */}
+          <Route
+            exact
+            path={[
+              "/categories/:categoryId/:deckId",
+              "/profile/:userId/decks/:deckId",
+              "/decks/:deckId",
+            ]}
+            component={FlashcardList}
+          />
+          <Route
+            exact
+            path={[
+              "/categories/:categoryId/:deckId/:cardId",
+              "/profile/:userId/decks/:deckId/:cardId",
+              "/decks/:deckId/",
+            ]}
+            component={Flashcard}
+          />
+          <Route exact path="/decks/:deckId/:cardId" component={Card} />
         </Switch>
       </div>
     </Router>

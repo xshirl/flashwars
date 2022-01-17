@@ -85,3 +85,114 @@ nav h1 {
   outline: none;
   border: none;
 }
+
+.form-group {
+  height: 100px;
+}
+
+.profile-header {
+  padding: 20px;
+  text-align: center;
+  font-size: 40px;
+  color: teal;
+}
+
+.subheader {
+  font-size: 20px;
+}
+.profile {
+  text-align: center;
+}
+
+.loggedNav {
+  background-color: teal;
+  z-index: -100;
+}
+
+.deckContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.deck {
+  border-radius: 20px;
+  flex-grow: 1;
+  width: 25%;
+  height: 200px;
+  background-color: lightblue;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.deckName {
+  color: darkblue;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rankedUser {
+  font-size: 30px;
+  color: teal;
+}
+
+.cardDisplay {
+  height: 300px;
+}
+
+i {
+  font-size: 30px;
+}
+
+.arrowIcon {
+  display: flex;
+  border: 1px solid #ddd;
+  margin: 10px;
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+.cardDisplay {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.displayQuestion {
+  display: flex;
+  width: 400px;
+  height: 200px;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  border: 3px solid teal;
+  border-radius: 20px;
+}
+
+.userAnswerForm {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.submitButton {
+  display: flex;
+  justify-content: center;
+}

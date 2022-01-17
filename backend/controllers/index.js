@@ -141,20 +141,32 @@ const getDeck = async (req, res) => {
   }
 }
 
-// const getFlashcards = async (req, res) => {
-//   try {
-//     const legit = await userOfRequest(req)
-//     const { deckId } = req.params
-//     if (legit) {
-//       const flashcards = await Flashcard.find({
-//         deck: deckId,
-//       })
-//       return res.status(200).json(flashcards)
-//     }
-//   } catch (error) {
-//     return res.status(500).json({ error: error.message })
-//   }
-// }
+const getAllFlashcards = async (req, res) => {
+  try {
+    const legit = await userOfRequest(req)
+    if (legit) {
+      const flashcards = await Flashcard.find()
+      return res.status(200).json(flashcards)
+    }
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+
+const getFlashcards = async (req, res) => {
+  try {
+    const legit = await userOfRequest(req)
+    const { deckId } = req.params
+    if (legit) {
+      const flashcards = await Flashcard.find({
+        deck: deckId,
+      })
+      return res.status(200).json(flashcards)
+    }
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
 
 const getFlashcard = async (req, res) => {
   try {
@@ -436,19 +448,29 @@ const updateUserPoints = async (req, res) => {
   //req takes in flashcard id
   try {
     const { cardId } = req.params
+    const { points } = req.body
     const legit = await userOfRequest(req)
     if (legit) {
       const user = await User.findById(legit.id)
+
       const card = await Flashcard.findById(cardId)
-      const cardPoints = card.difficulty * 2
-      await User.findByIdAndUpdate(
+
+      const cardPoints = parseInt(card.difficulty) * parseInt(points)
+      const updatedUser = await User.findByIdAndUpdate(
         legit.id,
-        { points: user.points + cardPoints },
-        { new: true }
-      )
-      return res.status(200).json(user)
+        { $set: { points: parseInt(user.points) + cardPoints } },
+        { new: true },
+        (error, event) => {
+          if (error) {
+            return res.status(404).json(error)
+          }
+          if (!event) {
+            return res.status(404).send("not found")
+          }
+        }
+      ).clone()
+      return res.status(200).json(updatedUser)
     }
-    return res.status(401).send("Not authorized")
   } catch (error) {
     return res.status(500).json({ error: error.message })
   }
@@ -463,6 +485,7 @@ module.exports = {
   getDecks,
   getDecksByCategory,
   getFlashcard,
+  getAllFlashcards,
   getLeaderboard,
   createFlashcard,
   createDeck,

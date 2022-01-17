@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { getLeaderboard } from "../api/apiCalls"
 import RankedUser from "./RankedUser"
-
+import LoggedNav from "./LoggedNav"
 const Leaderboard = () => {
   const [users, setUsers] = useState([])
 
@@ -20,9 +20,14 @@ const Leaderboard = () => {
 
   return (
     <div>
-      {users.map((user) => (
-        <RankedUser {...user} />
-      ))}
+      <LoggedNav />
+      <div className="leaderboard">
+        <h1 className="profile-header">Leaderboard </h1>
+        <h2 className="subheader">Rank | Username | Points </h2>
+        {users.map((user) => (
+          <RankedUser {...user} />
+        ))}
+      </div>
     </div>
   )
 }

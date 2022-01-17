@@ -20,9 +20,9 @@ export const getDecksByCategory = async (id) => {
   }
 }
 
-export const getUserDecks = async () => {
+export const getUserDecks = async (id) => {
   try {
-    const response = await api.get(`/profile/decks`)
+    const response = await api.get(`/profile/${id}/decks`)
     return response.data
   } catch (error) {
     throw error
@@ -30,25 +30,25 @@ export const getUserDecks = async () => {
 }
 export const createFlashcard = async (id, payload) => {
   try {
-    const response = await api.post(`/decks/${id}`, payload)
+    const response = await api.post(`/cards/${id}`, payload)
     return response.data
   } catch (error) {
     throw error
   }
 }
 
-export const editFlashcard = async (deckId, cardId, payload) => {
+export const editFlashcard = async (cardId, payload) => {
   try {
-    const response = await api.put(`/decks/${deckId}/${cardId}`, payload)
+    const response = await api.put(`/cards/${cardId}`, payload)
     return response.data
   } catch (error) {
     throw error
   }
 }
 
-export const deleteFlashcard = async (deckId, cardId) => {
+export const deleteFlashcard = async (cardId) => {
   try {
-    const response = await api.delete(`/decks/${deckId}/${cardId}`)
+    const response = await api.delete(`/cards/${cardId}`)
   } catch (error) {
     throw error
   }
@@ -74,6 +74,33 @@ export const deleteDeck = async (id) => {
 export const getLeaderboard = async () => {
   try {
     const response = await api.get("/leaderboard")
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const getFlashcards = async (deckId) => {
+  try {
+    const response = await api.get(`/decks/${deckId}`)
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const updateUserPoints = async (cardId, payload) => {
+  try {
+    const response = await api.put(`/cards/${cardId}/updateUserPoints`, payload)
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const getFlashcard = async (id) => {
+  try {
+    const response = await api.get(`/cards/${id}`)
     return response.data
   } catch (error) {
     throw error

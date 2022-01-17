@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
-
+import { Container } from "react-bootstrap"
 import { getDecksByCategory, getUserDecks } from "../api/apiCalls"
 
 import Deck from "./Deck"
+import LoggedNav from "./LoggedNav"
 
 const DeckList = () => {
   const [decks, setDecks] = useState([])
@@ -12,8 +13,8 @@ const DeckList = () => {
     id ? fetchDecksByCategory(id) : fetchDecksByUser(userId)
   }, [])
 
-  const fetchDecksByCategory = async (userId) => {
-    const response = await getDecksByCategory(userId)
+  const fetchDecksByCategory = async (id) => {
+    const response = await getDecksByCategory(id)
     setDecks((prevState) => [...prevState, ...response])
   }
 
@@ -24,9 +25,18 @@ const DeckList = () => {
 
   return (
     <div>
-      {decks.map((deck) => (
-        <Deck key={deck._id} {...deck} />
-      ))}
+      {" "}
+      <LoggedNav />
+      <Container>
+        <h2 className="profile-header"> Public Decks </h2>
+        <div className="deckContainer">
+          {decks.map((deck) => (
+            <div className="deck">
+              <Deck key={deck._id} categoryId={id} {...deck} />
+            </div>
+          ))}
+        </div>
+      </Container>
     </div>
   )
 }
