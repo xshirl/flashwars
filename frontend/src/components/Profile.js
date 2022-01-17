@@ -12,7 +12,6 @@ const Profile = () => {
     rank: undefined,
     decks: undefined,
   })
-  // const [decks, setDecks]
 
   useEffect(async () => {
     getProfileInfo()
@@ -20,9 +19,7 @@ const Profile = () => {
 
   const getProfileInfo = async () => {
     const user = await verifyuser()
-    console.log("user", user)
     const profile = await userProfile(user.user.id)
-    console.log("profile", profile)
     setInfo((prevState) => ({
       ...prevState,
       username: profile.user.username,
@@ -48,8 +45,6 @@ const Profile = () => {
         </div>
       </Container>
     </div>
-    //   {info.username} {info.points} {info.rank} {info.decks}
-    // </div>
   )
 }
 export default Profile

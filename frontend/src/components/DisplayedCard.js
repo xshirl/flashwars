@@ -5,37 +5,17 @@ import { updateUserPoints } from "../api/apiCalls"
 import { getFlashcard } from "../api/apiCalls"
 import checkSimilarity from "../utils/checkStringSimilarity"
 const DisplayedCard = ({
-  _id,
   question,
   answer,
   incrementIndex,
   decrementIndex,
 }) => {
-  // const [question, setQuestion] = useState(question)
-  // const [answer, setAnswer] = useState()
   const [isAnswered, setIsAnswered] = useState(false)
   const [userAnswer, setUserAnswer] = useState()
   const [accuracy, setAccuracy] = useState()
   const [showAnswerModal, setShowAnswerModal] = useState(false)
-  const [keepAnswer, setKeepAnswer] = useState(false)
   const { cardId } = useParams()
-  const [showQuestion, setShowQuestion] = useState(true)
   const [showAnswer, setShowAnswer] = useState(false)
-  useEffect(() => {
-    // console.log(_id)
-    // console.log("card", cardId)
-    // fetchCard(cardId)
-  }, [])
-
-  // const fetchCard = async (id) => {
-  //   try {
-  //     const response = await getFlashcard(id)
-  //     setQuestion(response.question)
-  //     setAnswer(response.answer)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
 
   const handleChange = (e) => {
     const { value } = e.target
@@ -64,7 +44,6 @@ const DisplayedCard = ({
         const response = await updateUserPoints(cardId, {
           points: accuracy,
         })
-        console.log(response)
       }
 
       closeHandler()

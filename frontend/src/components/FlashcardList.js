@@ -26,6 +26,7 @@ const FlashcardList = () => {
       console.log(error)
     }
   }
+
   useEffect(() => {
     fetchFlashcards(deckId)
   }, [])
@@ -35,14 +36,12 @@ const FlashcardList = () => {
   }, [cardIndex])
 
   const incrementCardIndex = () => {
-    console.log("index", cardIndex)
     if (cardIndex < flashcards.length - 1) {
       setCardIndex(cardIndex + 1)
       changeDisplayedCard(cardIndex)
     }
   }
   const decrementCardIndex = () => {
-    console.log("dec", cardIndex)
     if (cardIndex > 0) {
       setCardIndex(cardIndex - 1)
       changeDisplayedCard(cardIndex)
@@ -74,9 +73,6 @@ const FlashcardList = () => {
       )}
 
       <div className="cardDisplayContainer">
-        {/* <button className="arrowIcon" onClick={decrementCardIndex}>
-          <i className=" fa fa-arrow-left fa-3x"></i>
-        </button> */}
         <div className="cardDisplay">
           <DisplayedCard
             decrementIndex={decrementCardIndex}
@@ -84,9 +80,6 @@ const FlashcardList = () => {
             {...displayedCard}
           />
         </div>
-        {/* <button className="arrowIcon" onClick={incrementCardIndex}>
-          <i className="fa fa-arrow-right fa-3x"></i>
-        </button> */}
       </div>
     </div>
   )
