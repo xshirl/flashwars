@@ -66,7 +66,11 @@ const FlashcardList = () => {
         Create Flashcard
       </Button>
       {showCreateModal && (
-        <AddFlashcard show={showCreateModal} closeHandler={handleCloseModal} />
+        <AddFlashcard
+          show={showCreateModal}
+          deckId={deckId}
+          closeHandler={handleCloseModal}
+        />
       )}
 
       <div className="cardDisplayContainer">

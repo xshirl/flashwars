@@ -4,7 +4,7 @@ import { Button, Modal, Form, Dropdown } from "react-bootstrap"
 import { createFlashcard } from "../api/apiCalls"
 import { verifyuser } from "../api/apiUsers"
 
-const AddFlashcard = ({ show, closeHandler }) => {
+const AddFlashcard = ({ deckId, show, closeHandler }) => {
   const { id } = useParams()
   const [flashcard, setFlashcard] = useState({ difficulty: 1 })
   const [userId, setUserId] = useState()
@@ -32,8 +32,12 @@ const AddFlashcard = ({ show, closeHandler }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      setFlashcard((prevState) => ({ ...prevState, deck: id, creator: userId }))
-      const response = await createFlashcard(id, flashcard)
+      setFlashcard((prevState) => ({
+        ...prevState,
+        deck: deckId,
+        creator: userId,
+      }))
+      const response = await createFlashcard(deckId, flashcard)
       console.log(response)
       closeHandler()
     } catch (error) {
