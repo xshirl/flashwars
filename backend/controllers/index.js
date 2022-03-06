@@ -105,6 +105,17 @@ const verifyUser = async (req, res) => {
   }
 }
 
+const getAllDecks = async (req, res) => {
+  try {
+    const legit = await userOfRequest(req)
+    if (legit) {
+      const decks = await Deck.find()
+      return res.status(200).json(decks)
+    }
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
 const getDecks = async (req, res) => {
   try {
     const isPublic = req.query.public
@@ -293,7 +304,6 @@ const createDeck = async (req, res) => {
       deckData.creator = legit.id
       const category = await Category.find({ name: deckData.category })
       const updatedDeckData = {
-        _id: deckData._id,
         name: deckData.name,
         description: deckData.description,
         creator: legit.id,
@@ -495,4 +505,5 @@ module.exports = {
   deleteFlashcard,
   deleteDeck,
   updateUserPoints,
+  getAllDecks,
 }

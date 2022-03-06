@@ -20,6 +20,10 @@ router.get("/categories/:id", (req, res) =>
 router.get("/categories/:id/:deckId", (req, res) =>
   controller.getDeck(req, res)
 )
+
+router.get("/decks/:deckId", (req, res) => controller.getDeck(req, res))
+
+router.get("/allDecks", (req, res) => controller.getAllDecks(req, res))
 //decks --private
 router.get("/profile/:id/decks/", (req, res) => controller.getDecks(req, res)) //returns array of all decks
 router.post("/decks", (req, res) => controller.createDeck(req, res)) //create new deck

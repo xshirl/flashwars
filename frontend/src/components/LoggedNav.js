@@ -38,6 +38,11 @@ function LoggedNav() {
             Leaderboard
           </Link>
         </li>
+        <li class="item">
+          <Link to="/game" style={{ textDecoration: "none" }}>
+            Compete
+          </Link>
+        </li>
       </ul>
     </nav>
   )

@@ -196,3 +196,35 @@ i {
   display: flex;
   justify-content: center;
 }
+
+.category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #eee;
+  width: 200px;
+  height: 100px;
+  margin: 20px;
+}
+
+.category a {
+  text-decoration: none;
+  color: teal;
+  font-size: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+}
+
+.optionDeck {
+  display: flex;
+  padding: 10px;
+  color: teal;
+  margin: 5px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid #eee;
+}

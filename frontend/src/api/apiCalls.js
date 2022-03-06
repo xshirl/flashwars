@@ -106,3 +106,21 @@ export const getFlashcard = async (id) => {
     throw error
   }
 }
+
+export const getGameDecks = async () => {
+  try {
+    const response = await api.get(`/allDecks`)
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const getPlayingDeck = async (deckId) => {
+  try {
+    const response = await api.get(`/decks/${deckId}`)
+    return response.data
+  } catch (error) {
+    throw error
+  }
+}
